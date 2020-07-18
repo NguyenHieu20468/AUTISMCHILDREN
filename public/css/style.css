@@ -45,6 +45,10 @@ h6 {
   padding: 0;
 }
 
+.col-padding {
+  padding: 45px;
+}
+
 /* Back to top button */
 
 .back-to-top {
