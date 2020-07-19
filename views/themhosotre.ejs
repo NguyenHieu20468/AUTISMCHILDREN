@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>BizPage Bootstrap Template</title>
+    <title>Thêm hồ sơ trẻ</title>
     <%- include('./head.ejs') %>
 </head>
 
@@ -27,37 +27,37 @@
                 </div>
 
                 <div class="form">
-                    <form action="" method="post" role="form" class="contactForm">
+                    <form action="/themhosotre" method="post" role="form" class="contactForm" id="profile">
                         <div class="form-row">
                             <label>Họ tên trẻ</label>
                             <div class="form-group col-md-12">
-                                <input type="text" name="name" class="form-control" id="name" data-rule="minlen:1"
+                                <input type="text" name="ten" class="form-control" id="name" data-rule="minlen:1"
                                     required />
                                 <div class="validation"></div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Ngày sinh</label>
-                            <input type="date" name="" class="form-control" required />
+                            <label>Năm sinh</label>
+                            <input type="number" name="namsinh" class="form-control" required />
                         </div>
                         <div class="form-group">
                             <label>Giới tính</label>
                             <br />
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="gender">Nam
+                                    <input type="radio" class="form-check-input" name="gioitinh">Nam
                                 </label>
                             </div>
                             <div class="form-check-inline">
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="gender">Nữ
+                                    <input type="radio" class="form-check-input" name="gioitinh">Nữ
                                 </label>
                             </div>
                             <div class="validation"></div>
                         </div>
                         <div class="form-group">
                             <label>Trẻ được sinh tuần thứ mấy của thai kỳ?</label>
-                            <input type="number" class="form-control" name="subject" id="subject" />
+                            <input type="number" class="form-control" name="tuansinh"/>
                             <div class="validation"></div>
                         </div>
                         <div class="form-group">
@@ -83,16 +83,16 @@
                             <div class="form-group">
                                 <label>Kết quả chẩn đoán</label>
                                 <br />
-                                <select id="dropbox-result" style="width: 100%;">
+                                <select name="ketquachuandoan" id="dropbox-result" style="width: 100%;">
                                     <option disabled selected>Chọn</option>
-                                    <option value="">Theo dõi tự kỷ</option>
-                                    <option value="">Rối loạn tự kỷ/Tự kỷ</option>
-                                    <option value="">Rối loạn phát triển</option>
-                                    <option value="">Rối loạn phát triển lan tỏa</option>
-                                    <option value="">Chậm phát triển</option>
-                                    <option value="">Tăng động, giảm chú ý</option>
-                                    <option value="">RốI loạn giao tiếp</option>
-                                    <option value="">Trẻ phát triển bình thường</option>
+                                    <option value="Theo dõi tự kỷ">Theo dõi tự kỷ</option>
+                                    <option value="Rối loạn tự kỷ/Tự kỷ">Rối loạn tự kỷ/Tự kỷ</option>
+                                    <option value="Rối loạn phát triển">Rối loạn phát triển</option>
+                                    <option value="Rối loạn phát triển lan tỏa">Rối loạn phát triển lan tỏa</option>
+                                    <option value="Chậm phát triển">Chậm phát triển</option>
+                                    <option value="Tăng động, giảm chú ý">Tăng động, giảm chú ý</option>
+                                    <option value="RốI loạn giao tiếp">RốI loạn giao tiếp</option>
+                                    <option value="Trẻ phát triển bình thường">Trẻ phát triển bình thường</option>
                                     <option value="Other">Khác</option>
                                 </select>
                             </div>
@@ -100,7 +100,7 @@
                             <div id="note-result" class="form-group col-md-12" style="display: none;">
                                 <label>Kết quả chẩn đoán</label>
                                 <input type="text" name="note-result" class="form-control" id="name"
-                                    data-rule="minlen:1" required />
+                             />
                                 <div class="validation"></div>
                             </div>
 
@@ -117,34 +117,34 @@
 
                             <div class="form-group">
                                 <label>Số tháng tuổi của trẻ tại thời điểm chẩn đoán</label>
-                                <input type="number" class="form-control" name="subject" id="subject" />
+                                <input type="number" class="form-control" name="sothangtuoi" />
                                 <div class="validation"></div>
                             </div>
                             <div class="form-group">
                                 <label>Nơi chẩn đoán</label>
                                 <br />
-                                <select style="width: 100%;">
+                                <select name="noichuandoan" style="width: 100%;">
                                     <option disabled selected>Chọn</option>
-                                    <option value="">Bệnh viện Nhi Trung Ương</option>
-                                    <option value="">Bệnh viện Đại học Y dược</option>
-                                    <option value="">Bệnh viện Nhi Đồng 1</option>
-                                    <option value="">Bệnh viện Nhi Đồng 2</option>
-                                    <option value="">Bệnh viện Tỉnh</option>
-                                    <option value="">Khác</option>
+                                    <option value="Bệnh viện Nhi Trung Ương">Bệnh viện Nhi Trung Ương</option>
+                                    <option value="Bệnh viện Đại học Y dược">Bệnh viện Đại học Y dược</option>
+                                    <option value="Bệnh viện Nhi Đồng 1">Bệnh viện Nhi Đồng 1</option>
+                                    <option value="Bệnh viện Nhi Đồng 2">Bệnh viện Nhi Đồng 2</option>
+                                    <option value="Bệnh viện Tỉnh">Bệnh viện Tỉnh</option>
+                                    <option value="Khác">Khác</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Người chẩn đoán</label>
                                 <br />
-                                <select style="width: 100%;">
+                                <select name="nguoichuandoan" style="width: 100%;">
                                     <option disabled selected>Chọn</option>
-                                    <option value="">Bác sĩ chuyên khoa nhi</option>
-                                    <option value="">Bác sĩ chuyên đa khoa</option>
-                                    <option value="">Cán bộ tâm lý</option>
-                                    <option value="">Bác sĩ chuyên ngành khác</option>
-                                    <option value="">Y tá/Điều dưỡng</option>
-                                    <option value="">Giáo viên mầm non</option>
-                                    <option value="">Giáo viên giáo dục đặc biệt</option>
+                                    <option value="Bác sĩ chuyên khoa nhi">Bác sĩ chuyên khoa nhi</option>
+                                    <option value="Bác sĩ chuyên đa khoa">Bác sĩ chuyên đa khoa</option>
+                                    <option value="Cán bộ tâm lý">Cán bộ tâm lý</option>
+                                    <option value="Bác sĩ chuyên ngành khác">Bác sĩ chuyên ngành khác</option>
+                                    <option value="Y tá/Điều dưỡng">Y tá/Điều dưỡng</option>
+                                    <option value="Giáo viên mầm non">Giáo viên mầm non</option>
+                                    <option value="Giáo viên giáo dục đặc biệt">Giáo viên giáo dục đặc biệt</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -153,13 +153,13 @@
                                 <div class="form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" class="form-check-input" onclick="yesnoCheck();"
-                                            id="yesCheck" name="diagnose">Rồi
+                                            id="yesCheck" name="dasangloc">Rồi
                                     </label>
                                 </div>
                                 <div class="form-check-inline">
                                     <label class="form-check-label">
                                         <input type="radio" class="form-check-input" onclick="yesnoCheck();"
-                                            name="diagnose">Chưa
+                                            name="dasangloc">Chưa
                                     </label>
                                 </div>
                                 <div class="validation"></div>
@@ -191,7 +191,9 @@
                                 hoặc lại tỏ ra quá quan tâm như vặn vẹo, ôm hôn.</label><br>
                         </div>
 
-                        <div class="text-center"><button type="submit">Lưu</button></div>
+                        <div class="text-center">
+                            <button type="submit">Lưu</button>
+                        </div>
                     </form>
                 </div>
 
@@ -199,6 +201,10 @@
         </section><!-- #contact -->
 
         <script type="text/javascript">
+            function submitProfile() {
+                $('#profile').submit();
+            }
+
             function yesnoCheck() {
                 if (document.getElementById('yesCheck').checked) {
                     document.getElementById('ifYes').style.display = 'block';

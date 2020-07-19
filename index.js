@@ -2,6 +2,9 @@ var express = require('express');
 var app = express();
 app.listen(process.env.PORT || 1234);
 
+//template engine
+app.set('view engine', 'ejs');
+
 //middleware
 app.use(express.static('public')); //say that all file in public is static, dont compile
 app.use('/public', express.static('public'));
@@ -15,8 +18,6 @@ app.use((req, resp, next) => {
     next();
 });
 
-//template engine
-app.set('view engine', 'ejs');
 
 //controller
 app.use('/', require('./controllers/parent.js'));
