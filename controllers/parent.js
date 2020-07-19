@@ -5,10 +5,12 @@ var objectId = require('mongodb').ObjectID;
 // middleware
 var multer = require('multer');
 var upload = multer({});
+
 // utils
 var MyUtil = require("../utils/MyUtil.js");
 const session = require('express-session');
 const { validationResult } = require('express-validator');
+
 // daos
 var pathDAO = "../daos/mongoose";
 var phuhuynhDAO = require(pathDAO + "/phuhuynhDAO.js");
@@ -17,6 +19,7 @@ var treemDAO = require(pathDAO + "/treemDAO.js");
 router.get('/', async (req, resp) => {
     resp.render('../views/trangchu.ejs');
 });
+
 
 router.get('/dangnhap', async (req, resp) => {
     if (!req.session.phuhuynh) {
@@ -61,7 +64,10 @@ router.post('/dangnhap', async (req, resp) => {
             req.session.phuhuynh = result;
             console.log('logged in')
             console.log("Complete render")
-            resp.redirect('/');
+            // resp.redirect('/',);
+            resp.render("trangchu",{
+                TITLE: "Welcome tho EJS Home page"        
+            });
         } else {
             console.log('invalid');
             resp.render('dangnhap');
@@ -104,6 +110,34 @@ router.get('/lienhe', async (req, resp) => {
 
 router.get('/themhosotre', async (req, resp) => {
     resp.render('../views/themhosotre.ejs');
+});
+
+router.post('/themhosotre', async (req, resp) => {
+    var ten = req.body.ten;
+    var gioitinh = req.body.gioitinh;
+    var namsinh = req.body.namsinh;
+    var tuansinh = req.body.tuansinh;
+    var ketquachuandoan = "";
+    var sothangtuoi = 0;
+    var noichuandoan = "";
+    var nguoichuandoan = "";
+    if(req.body.ketquachuandoan) ketquachuandoan = req.body.ketquachuandoan;
+    if(req.body.sothangtuoi) sothangtuoi = parseInt(req.body.sothangtuoi);
+    if(req.body.noichuandoan) noichuandoan = req.body.noichuandoan;
+    if(req.body.nguoichuandoan) nguoichuandoan = req.body.nguoichuandoan;
+    
+    var hoso = { ten: ten, gioitinh: gioitinh, namsinh: namsinh, tuansinh: tuansinh, sothangtuoi: sothangtuoi, 
+        ketquachuandoan: ketquachuandoan, noichuandoan: noichuandoan, nguoichuandoan: nguoichuandoan };
+
+    console.log(hoso);
+
+    // var result = await treemDAO.insert(hoso);
+    // if(result) {
+    //     resp.redirect('/themhosotre');
+    // } else {
+    //     resp.redirect('/themhosotre');
+    // }
+
 });
 
 router.get('/thuvien', async (req, resp) => {
