@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="form">
-                    <form action="themhosotre" method="post" role="form" class="contactForm" id="">
+                    <form action="/themhosotre" method="post" role="form" class="contactForm" id="profile">
                         <div class="form-row">
                             <label>Họ tên trẻ</label>
                             <div class="form-group col-md-12">
@@ -100,7 +100,7 @@
                             <div id="note-result" class="form-group col-md-12" style="display: none;">
                                 <label>Kết quả chẩn đoán</label>
                                 <input type="text" name="note-result" class="form-control" id="name"
-                                    data-rule="minlen:1" required />
+                             />
                                 <div class="validation"></div>
                             </div>
 
@@ -191,15 +191,19 @@
                                 hoặc lại tỏ ra quá quan tâm như vặn vẹo, ôm hôn.</label><br>
                         </div>
 
-                        
+                        <div class="text-center">
+                            <button type="submit">Lưu</button>
+                        </div>
                     </form>
-                    <div class="text-center"><button type="submit">Lưu</button></div>
                 </div>
 
             </div>
         </section><!-- #contact -->
 
         <script type="text/javascript">
+            function submitProfile() {
+                $('#profile').submit();
+            }
 
             function yesnoCheck() {
                 if (document.getElementById('yesCheck').checked) {

@@ -21,7 +21,8 @@ var treemSchema = mongoose.Schema({
   sothangtuoi: Number,
   ketquachuandoan: String,
   noichuandoan: String,
-  nguoichuandoan: String
+  nguoichuandoan: String,
+  idPhuHuynh: mongoose.Schema.Types.ObjectId
 }, { versionKey: false });
 
 // models

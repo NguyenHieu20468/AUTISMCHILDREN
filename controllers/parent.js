@@ -10,6 +10,7 @@ var upload = multer({});
 var MyUtil = require("../utils/MyUtil.js");
 const session = require('express-session');
 const { validationResult } = require('express-validator');
+const { ObjectID } = require('mongodb');
 
 // daos
 var pathDAO = "../daos/mongoose";
@@ -66,7 +67,7 @@ router.post('/dangnhap', async (req, resp) => {
             console.log("Complete render")
             // resp.redirect('/',);
             resp.render("trangchu",{
-                TITLE: "Welcome tho EJS Home page"        
+                TITLE: "Welcome tho EJS Home page"
             });
         } else {
             console.log('invalid');
@@ -109,12 +110,15 @@ router.get('/lienhe', async (req, resp) => {
 });
 
 router.get('/themhosotre', async (req, resp) => {
-    resp.render('../views/themhosotre.ejs');
+    if(req.session.phuhuynh)
+        resp.render('../views/themhosotre.ejs');
+    else 
+        resp.render('dangnhap');
 });
 
 router.post('/themhosotre', async (req, resp) => {
     var ten = req.body.ten;
-    var gioitinh = req.body.gioitinh;
+    var gioitinh = req.body.gioitinh === "Nam" ? false : true;
     var namsinh = req.body.namsinh;
     var tuansinh = req.body.tuansinh;
     var ketquachuandoan = "";
@@ -125,19 +129,22 @@ router.post('/themhosotre', async (req, resp) => {
     if(req.body.sothangtuoi) sothangtuoi = parseInt(req.body.sothangtuoi);
     if(req.body.noichuandoan) noichuandoan = req.body.noichuandoan;
     if(req.body.nguoichuandoan) nguoichuandoan = req.body.nguoichuandoan;
+
+    var idPhuHuynh = "";
+    if(req.session.phuhuynh) {
+        idPhuHuynh = req.session.phuhuynh._id;
+    }
     
     var hoso = { ten: ten, gioitinh: gioitinh, namsinh: namsinh, tuansinh: tuansinh, sothangtuoi: sothangtuoi, 
-        ketquachuandoan: ketquachuandoan, noichuandoan: noichuandoan, nguoichuandoan: nguoichuandoan };
+        ketquachuandoan: ketquachuandoan, noichuandoan: noichuandoan, nguoichuandoan: nguoichuandoan, idPhuHuynh: idPhuHuynh };
 
-    console.log(hoso);
 
-    // var result = await treemDAO.insert(hoso);
-    // if(result) {
-    //     resp.redirect('/themhosotre');
-    // } else {
-    //     resp.redirect('/themhosotre');
-    // }
-
+    var result = await treemDAO.insert(hoso);
+    if(result) {
+        MyUtil.showAlertAndRedirect(resp, "Thêm hồ sơ thành công", './');
+    } else {
+        resp.redirect('/themhosotre');
+    }
 });
 
 router.get('/thuvien', async (req, resp) => {
