@@ -110,4 +110,15 @@ router.get('/thuvien', async (req, resp) => {
     resp.render('../views/thuvien.ejs');
 });
 
+router.get('/blog', async (req, resp) => {
+    resp.render('../views/blog-tre-tu-ky.ejs');
+});
+
+router.get('/nhatky', async (req, resp) => {
+    if(req.session.phuhuynh)
+        resp.render('../views/nhatky.ejs');
+    else
+        resp.render('dangnhap');
+});
+
 module.exports = router;
