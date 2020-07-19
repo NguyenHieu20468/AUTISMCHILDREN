@@ -94,7 +94,10 @@ router.get('/dangky', async (req, resp) => {
 });
 
 router.get('/baigiang', async (req, resp) => {
-    resp.render('../views/baigiang.ejs');
+    if(req.session.phuhuynh)
+        resp.render('../views/baigiang.ejs');
+    else
+        resp.render('dangnhap');
 });
 
 router.get('/gioithieu', async (req, resp) => {
@@ -102,7 +105,10 @@ router.get('/gioithieu', async (req, resp) => {
 });
 
 router.get('/lamkiemtra', async (req, resp) => {
-    resp.render('../views/lamkiemtra.ejs');
+    if(req.session.phuhuynh)
+       resp.render('../views/lamkiemtra.ejs');
+    else
+        resp.render('dangnhap');
 });
 
 router.get('/lienhe', async (req, resp) => {
@@ -151,4 +157,21 @@ router.get('/thuvien', async (req, resp) => {
     resp.render('../views/thuvien.ejs');
 });
 
+router.get('/blog', async (req, resp) => {
+    resp.render('../views/blog-tre-tu-ky.ejs');
+});
+
+router.get('/nhatky', async (req, resp) => {
+    if(req.session.phuhuynh)
+        resp.render('../views/nhatky.ejs');
+    else
+        resp.render('dangnhap');
+});
+
+router.get('/chatbot', async (req, resp) => {
+    if(req.session.phuhuynh)
+        resp.render('../views/chatbot.ejs');
+    else
+        resp.render('dangnhap');
+});
 module.exports = router;
