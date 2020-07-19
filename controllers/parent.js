@@ -130,4 +130,10 @@ router.get('/nhatky', async (req, resp) => {
         resp.render('dangnhap');
 });
 
+router.get('/chatbot', async (req, resp) => {
+    if(req.session.phuhuynh)
+        resp.render('../views/chatbot.ejs');
+    else
+        resp.render('dangnhap');
+});
 module.exports = router;
