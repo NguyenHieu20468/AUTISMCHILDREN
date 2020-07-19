@@ -87,7 +87,10 @@ router.get('/dangky', async (req, resp) => {
 });
 
 router.get('/baigiang', async (req, resp) => {
-    resp.render('../views/baigiang.ejs');
+    if(req.session.phuhuynh)
+        resp.render('../views/baigiang.ejs');
+    else
+        resp.render('dangnhap');
 });
 
 router.get('/gioithieu', async (req, resp) => {
@@ -95,7 +98,10 @@ router.get('/gioithieu', async (req, resp) => {
 });
 
 router.get('/lamkiemtra', async (req, resp) => {
-    resp.render('../views/lamkiemtra.ejs');
+    if(req.session.phuhuynh)
+       resp.render('../views/lamkiemtra.ejs');
+    else
+        resp.render('dangnhap');
 });
 
 router.get('/lienhe', async (req, resp) => {
@@ -103,7 +109,10 @@ router.get('/lienhe', async (req, resp) => {
 });
 
 router.get('/themhosotre', async (req, resp) => {
-    resp.render('../views/themhosotre.ejs');
+    if(req.session.phuhuynh)
+        resp.render('../views/themhosotre.ejs');
+    else
+        resp.render('dangnhap');
 });
 
 router.get('/thuvien', async (req, resp) => {
