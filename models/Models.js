@@ -1,62 +1,30 @@
-// var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
-// // schemas
-// var AdminSchema = mongoose.Schema({
-//   _id: mongoose.Schema.Types.ObjectId,
-//   username: String,
-//   password: String
-// }, { versionKey: false });
+// schemas
+var phuhuynhSchema = mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  tennguoidung: String,
+  matkhau: String,
+  email: String,
+  nghenghiep: String,
+  namsinh: Number,
+  thanhpho: String,
+  quan: String
+}, { versionKey: false });
 
-// var ZoneSchema = mongoose.Schema({
-//   _id: mongoose.Schema.Types.ObjectId,
-//   name: String,
-//   image: String
-// }, { versionKey: false });
+var treemSchema = mongoose.Schema({
+  _id: mongoose.Schema.Types.ObjectId,
+  ten: String,
+  gioitinh: Boolean,
+  namsinh: Number,
+  tuansinh: Number,
+  sothangtuoi: Number,
+  ketquachuandoan: String,
+  noichuandoan: String,
+  nguoichuandoan: String
+}, { versionKey: false });
 
-// var CategorySchema = mongoose.Schema({
-//   _id: mongoose.Schema.Types.ObjectId,
-//   name: String
-// }, { versionKey: false });
-
-// var CustomerSchema = mongoose.Schema({
-//   _id: mongoose.Schema.Types.ObjectId,
-//   username: String,
-//   password: String,
-//   name: String,
-//   phone: String,
-//   email: String,
-//   active: Number,
-//   token: String,
-// }, { versionKey: false });
-
-// var ProductSchema = mongoose.Schema({
-//   _id: mongoose.Schema.Types.ObjectId,
-//   name: String,
-//   price: Number,
-//   image: String,
-//   cdate: Number,
-//   category: CategorySchema
-// }, { versionKey: false });
-
-// var ItemSchema = mongoose.Schema({
-//   product: ProductSchema,
-//   quantity: Number
-// }, { versionKey: false, _id: false });
-
-// var OrderSchema = mongoose.Schema({
-//   _id: mongoose.Schema.Types.ObjectId,
-//   cdate: Number,
-//   total: Number,
-//   status: String,
-//   customer: CustomerSchema,
-//   items: [ItemSchema]
-// }, { versionKey: false });
-
-// // models
-// var Admin = mongoose.model('Admin', AdminSchema);
-// var Zone = mongoose.model('Zone', ZoneSchema);
-// var Category = mongoose.model('Category', CategorySchema);
-// var Customer = mongoose.model('Customer', CustomerSchema);
-// var Product = mongoose.model('Product', ProductSchema);
-// var Order = mongoose.model('Order', OrderSchema);
-// module.exports = { Admin, Zone, Category, Customer, Product, Order };
+// models
+var phuhuynh = mongoose.model('phuhuynh', phuhuynhSchema);
+var treem = mongoose.model('treem', treemSchema);
+module.exports = { phuhuynh, treem };

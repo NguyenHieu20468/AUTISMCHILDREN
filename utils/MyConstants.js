@@ -3,7 +3,7 @@ var MyConstants = {
   DB_USER: 'admin',
   DB_PASS: 'Ws63LIR0qnhtCPb1',
   DB_DATABASE: 'AutismChildren',
-  HOSTNAME: '',
+  HOSTNAME: 'https://autismchildren.herokuapp.com/',
   EMAIL_USER: '',
   EMAIL_PASS: '',
 };
